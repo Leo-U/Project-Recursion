@@ -2,7 +2,6 @@
 
 def fibs(n, a = 0, b = 1, result = [0])
   return result if n == 1
-  return [] if !n.is_a?(Integer) || n <= 0
   result << b
   fibs(n - 1, b, a + b, result)
 end
