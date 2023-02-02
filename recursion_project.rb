@@ -18,13 +18,5 @@ def merge_sort(arr, merged = [], mid = arr.count / 2)
   merged + l + r
 end
 
-n = rand(1..20)
-
-puts "The Fibonacci sequence of randomly-generated length #{n} is: \n#{fibs(n)}"
-
-arr = []
-rand(2..20).times do
-  arr << rand(200)
-end
-
-puts "Randomly-generated & merge-sorted array: \n#{merge_sort(arr)}"
+puts "The Fibonacci sequence of randomly-generated length #{n = rand(1..20)} is: \n#{fibs(n)}"
+puts "Randomly-generated & merge-sorted array: \n#{arr = []; rand(2..20).times { arr << rand(200) }; arr}"
