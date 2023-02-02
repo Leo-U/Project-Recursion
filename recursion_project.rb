@@ -6,27 +6,25 @@ def fibs(n, a = 0, b = 1, result = [0])
   fibs(n - 1, b, a + b, result)
 end
 
-# 2. Make a method that uses Merge Sort and recursion to sort a given array.
+# 2. Write a recursive method that uses 'merge sort' to sort a given array.
 
-def merge_sort(array)
-  return array if array.length < 2
-
-  mid = array.length / 2
-  left_half = array.slice(0, mid)
-  right_half = array.slice(mid, array.length - mid)
-
-  left = merge_sort(left_half)
-  right = merge_sort(right_half)
-  
-  merged = []
-
-  while left.length > 0 && right.length > 0 do
-    if left[0] <= right[0]
-      merged << left.shift
-    elsif left[0] > right[0]
-      merged << right.shift
-    end    
+def merge_sort(arr, merged = [], mid = arr.count / 2)
+  return arr if arr.count < 2
+  l = merge_sort(arr.slice!(0, mid))
+  r = merge_sort(arr)
+  while l.count > 0 && r.count > 0 do
+    l[0] < r[0] ? merged << l.shift : merged << r.shift
   end
-
-  return merged + left + right
+  merged + l + r
 end
+
+n = rand(1..20)
+
+puts "The Fibonacci sequence of randomly-generated length #{n} is: \n#{fibs(n)}"
+
+arr = []
+rand(2..20).times do
+  arr << rand(200)
+end
+
+puts "Randomly-generated & merge-sorted array: \n#{merge_sort(arr)}"
